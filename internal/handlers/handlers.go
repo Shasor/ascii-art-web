@@ -2,16 +2,36 @@ package handlers
 
 import (
 	"bytes"
+	"fmt"
 	"net/http"
 	"path/filepath"
 	"text/template"
+
+	"github.com/Shasor/ascii-art-web/internal/ascii-art"
 )
 
 func Index(w http.ResponseWriter, r *http.Request) {
-	renderTemplate(w, "index")
+	renderTemplate(w, "index", "")
 }
 
-func renderTemplate(w http.ResponseWriter, tmplName string) {
+func Submit(w http.ResponseWriter, r *http.Request) {
+    r.ParseForm()
+
+    text := r.Form.Get("text")
+    font := r.Form.Get("font")
+
+    // Traiter les données du formulaire (validation etc.)
+    fmt.Println("Text:", string('"') + text + string('"'))
+    fmt.Println("Font:", font)
+
+    // En cas de succès, définir le message de confirmation
+    data := ascii.Ascii(text, font)
+
+    // Rendre le template "index" avec les données
+    renderTemplate(w, "index", data)
+}
+
+func renderTemplate(w http.ResponseWriter, tmplName string, data string) {
 	templateCache, err := createTemplateCache()
 	if err != nil {
 		panic(err)
@@ -24,7 +44,7 @@ func renderTemplate(w http.ResponseWriter, tmplName string) {
 	}
 
 	buf := new(bytes.Buffer)
-	tmpl.Execute(buf, nil)
+	tmpl.Execute(buf, data)
 	buf.WriteTo(w)
 }
 
