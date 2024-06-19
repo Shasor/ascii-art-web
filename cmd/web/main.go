@@ -11,6 +11,7 @@ func main() {
 	const port = ":8080"
 
 	http.HandleFunc("/", handlers.Index)
+	http.HandleFunc("/submit", handlers.Submit)
 	http.Handle("/src/assets/css/", http.StripPrefix("/src/assets/css/", http.FileServer(http.Dir("./src/assets/css"))))
 	// http.Handle("/templates/", http.StripPrefix("/templates/", http.FileServer(http.Dir("./templates"))))
 	// http.Handle("/templates/layouts/", http.StripPrefix("/templates/layouts/", http.FileServer(http.Dir("./templates/layouts"))))
