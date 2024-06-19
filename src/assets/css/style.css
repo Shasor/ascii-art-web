@@ -1,7 +1,7 @@
 * {
   margin: 0;
   box-sizing: border-box;
-  font-family: "poppins", sans-serif;
+  font-family: "Poppins Mono", monospace;
   padding: 0 10px;
 }
 
@@ -32,7 +32,7 @@ body {
 .body {
   position: relative;
   width: 700px;
-  height: 500px;
+  height: 600px;
   background: #1c1c11;
   border-radius: 10px;
   overflow: hidden;
@@ -45,7 +45,7 @@ body {
   top: -50%;
   left: -50%;
   width: 700px;
-  height: 500px;
+  height: 600px;
   background: linear-gradient(0deg, transparent, #ff0000, #ff0000);
   transform-origin: bottom right;
   animation: animate 3s linear infinite;
@@ -57,7 +57,7 @@ body {
   top: 50%;
   left: 50%;
   width: 700px;
-  height: 500px;
+  height: 600px;
   background: linear-gradient(0deg, transparent, #0000ff, #0000ff);
   transform-origin: top left;
   animation: animate 3s linear infinite;
@@ -135,10 +135,21 @@ input[type="submit"] {
 .result textarea {
   width: 100%;
   height: 100%;
-  padding: 20px 10px 5px;
+  padding: 45px 20px 5px;
   border-width: 2px;
   border-radius: 8px;
   border-color: #0000ff;
   resize: none;
   font-size: 15px;
+  overflow-x: auto; /* Active le défilement horizontal */
+  overflow-y: auto; /* Désactive le défilement vertical */
+  white-space: pre; /* Conserve les espaces et les sauts de ligne */
+}
+
+a {
+  text-decoration: none;
+}
+
+a:visited {
+  color: inherit;
 }
