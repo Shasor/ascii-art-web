@@ -1,27 +1,37 @@
 {{template "base" .}}
 
-{{define "logo url"}}https://w7.pngwing.com/pngs/693/969/png-transparent-ascii-art-character-logo-lattitude.png{{end}}
+{{define "logo url"
 
-{{define "title"}}Ascii-Art-Web{{end}}
+
+}}https://w7.pngwing.com/pngs/693/969/png-transparent-ascii-art-character-logo-lattitude.png{{
+  end
+}}
+
+{{define "title"}}Ascii-Art-Web{{ end }}
 
 {{define "body"}}
 <div class="body">
-    <div class="form">
-        <h2>Ascii Generator</h2>
-        <div class="input">
-            <textarea placeholder="Type Something..."></textarea>
-        </div>
-        <div class="input">
-            <select>
-                <option>Standard</option>
-                <option>Shadow</option>
-                <option>Thinkertoy</option>
-            </select>
-        </div>
-        <div class="input">
-            <input type="button" value="Generate!">
-        </div>
-        <hr>
+  <div class="form">
+    <form action="/submit" method="GET">
+      <h2><a href="http://localhost:8080">Ascii Generator</a></h2>
+      <div class="input">
+        <textarea name="text">Type Something...</textarea>
+      </div>
+      <div class="input">
+        <select name="font">
+          <option>Standard</option>
+          <option>Shadow</option>
+          <option>Thinkertoy</option>
+        </select>
+      </div>
+      <div class="input">
+        <input type="submit" value="Generate!" />
+      </div>
+    </form>
+    <hr />
+    <div class="result">
+      <textarea disabled>{{ if . }}{{ . }}{{ end }}</textarea>
     </div>
+  </div>
 </div>
-{{end}}
+{{ end }}
