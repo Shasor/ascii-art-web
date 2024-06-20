@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"net/http"
 	"path/filepath"
+	"strings"
 	"text/template"
 
 	"github.com/Shasor/ascii-art-web/internal/ascii-art"
@@ -18,16 +19,18 @@ func Submit(w http.ResponseWriter, r *http.Request) {
     r.ParseForm()
 
     text := r.Form.Get("text")
+	text = strings.ReplaceAll(text, "\r\n", "\\n")
+
     font := r.Form.Get("font")
 
-    // Traiter les données du formulaire (validation etc.)
-    fmt.Println("Text:", string('"') + text + string('"'))
+    // Process form data (validation, etc.)
+    fmt.Println("Text:", text)
     fmt.Println("Font:", font)
 
-    // En cas de succès, définir le message de confirmation
+    // Generate ASCII art on success
     data := ascii.Ascii(text, font)
 
-    // Rendre le template "index" avec les données
+    // Render the "index" template with data
     renderTemplate(w, "index", data)
 }
 
