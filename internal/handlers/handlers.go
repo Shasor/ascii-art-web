@@ -24,7 +24,7 @@ func Submit(w http.ResponseWriter, r *http.Request) {
     font := r.Form.Get("font")
 
     // Process form data (validation, etc.)
-    fmt.Println("Text:", text)
+    fmt.Println(`Texte:" ` + text + `"`)
     fmt.Println("Font:", font)
 
     // Generate ASCII art on success
