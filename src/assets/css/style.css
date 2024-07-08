@@ -4,29 +4,32 @@
   font-family: "Poppins Mono", monospace;
   padding: 0 10px;
 }
+html {
+  --s: 134px; /* control the size*/
+  --c1: #1d1d1d;
+  --c2: #4e4f51;
+  --c3: #3c3c3c;
+
+  background: repeating-conic-gradient(
+        from 30deg,
+        #0000 0 120deg,
+        var(--c3) 0 180deg
+      )
+      calc(0.5 * var(--s)) calc(0.5 * var(--s) * 0.577),
+    repeating-conic-gradient(
+      from 30deg,
+      var(--c1) 0 60deg,
+      var(--c2) 0 120deg,
+      var(--c3) 0 180deg
+    );
+  background-size: var(--s) calc(var(--s) * 0.577);
+}
 
 body {
   display: flex;
   align-items: center;
   justify-content: center;
   height: 100vh;
-  background-image: radial-gradient(
-    circle at top center,
-    rgb(235, 235, 235) 0%,
-    rgb(235, 235, 235) 10%,
-    rgb(229, 229, 229) 10%,
-    rgb(229, 229, 229) 19%,
-    rgb(222, 222, 222) 19%,
-    rgb(222, 222, 222) 22%,
-    rgb(216, 216, 216) 22%,
-    rgb(216, 216, 216) 24%,
-    rgb(209, 209, 209) 24%,
-    rgb(209, 209, 209) 63%,
-    rgb(203, 203, 203) 63%,
-    rgb(203, 203, 203) 75%,
-    rgb(196, 196, 196) 75%,
-    rgb(196, 196, 196) 100%
-  );
 }
 
 .body {
